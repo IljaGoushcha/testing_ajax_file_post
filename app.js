@@ -38,18 +38,6 @@ function getAmazonUrl() {
   // });
 }
 function uploadToS3() {
-  // var myString1 = '<input id="acl" type="hidden" name="acl" value="' + responseSignKey.acl + '">'
-  //                 +'<input id="key" type="hidden" name="key" value="' + responseSignKey.key + '">'
-  //                 +'<input id="accessKey" type="hidden" name="AWSAccessKeyId" value="' + responseSignKey.access_key + '">'
-  //                 +'<input id="uploadPolicy" type="hidden" name="Policy" value="' + responseSignKey.policy + '">'
-  //                 +'<input id="uploadSignature" type="hidden" name="Signature" value="' + responseSignKey.signature + '">';
-  // var myString2 = '<input id="submitButton" type="submit" name="submit" value="send to s3">'
-  // $('#form-for-s3').prepend(myString1);
-  // $('#form-for-s3').append(myString2);
-
-  // setTimeout(function() {
-  //   $('#submitButton').trigger('click');
-  // }, 100);
   var formData = new FormData();
   formData.append('acl', responseSignKey.acl);
   formData.append('key', responseSignKey.key);
@@ -79,20 +67,11 @@ function uploadToS3() {
     },
     complete: function() {
       console.log('finished file upload.');
+      sendToRails();
     }
   });
-
-
-      // create_table :songs do |t|
-      // t.string :url, index: true
-      // t.string :title
-      // t.string :author
-      // t.string :album
-      // t.string :pitch
-      // t.string :volume
-      // t.integer :fade_start_time
-      // t.integer :fade_stop_time
-      // t.timestamps
+}
+function sendToRails() {
 
 }
 
