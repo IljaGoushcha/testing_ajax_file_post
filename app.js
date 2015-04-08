@@ -16,26 +16,12 @@ function showFileObject() {
 
 function getAmazonUrl() {
   console.log("inside getAmazonURL");
-  // $.ajax('http://localhost:3000/amazon/sign_key', {
-  //   success: function(response) {
-  //     console.log("response: " + response);
-  //     setTimeout(function() {
-  //       console.log("response: " + response);
-  //     }, 4000);
-  //   }
-  // });
+
   $.get('http://localhost:3000/amazon/sign_key', function(response) {
     console.log("response: " + response.key);
     responseSignKey = response;
   });
 
-  // .success(function(response)
-  //   console.log(response);
-  // }).error(function(data, status, headers, config){
-  //   console.log(data);
-  //   console.log(status);
-  //   console.log("error");
-  // });
 }
 function uploadToS3() {
   var formData = new FormData();
@@ -72,10 +58,27 @@ function uploadToS3() {
   });
 }
 function sendToRails() {
-
+  var songData = {
+    song: {
+      "url": "something",
+      "title": "smells like teen spirit",
+      "author": "nirvana"
+      "album": "grunge"
+      "pitch": "0"
+      "pitch": "100"
+      "fade_start_time": "0"
+      "fade_stop_time": "0"
+    }
+  }
+  $.ajax({
+    url: 'http://localhost:3000/songs',
+    type: 'POST',
+    data: songData
+  });
 }
 
 $(document).ready(function() {
   $('#amazon-keys-button').on('click', getAmazonUrl);
   $('#upload-button').on('click', uploadToS3);
+  $('#upload-to-rails-button').on('click', sendToRails);
 })
