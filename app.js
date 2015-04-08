@@ -62,11 +62,11 @@ function sendToRails() {
     song: {
       "url": "something",
       "title": "smells like teen spirit",
-      "author": "nirvana"
-      "album": "grunge"
-      "pitch": "0"
-      "pitch": "100"
-      "fade_start_time": "0"
+      "author": "nirvana",
+      "album": "grunge",
+      "pitch": "0",
+      "volume": "100",
+      "fade_start_time": "0",
       "fade_stop_time": "0"
     }
   }
