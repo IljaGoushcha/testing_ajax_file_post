@@ -53,17 +53,17 @@ function uploadToS3() {
     },
     complete: function() {
       console.log('finished file upload.');
-      sendToRails();
+      sendToRails(responseSignKey.key);
     }
   });
 }
-function sendToRails() {
+function sendToRails(url) {
   var songData = {
     song: {
-      "url": "something",
-      "title": "smells like teen spirit",
-      "author": "nirvana",
-      "album": "grunge",
+      "url": url,
+      "title": $('input[title]').val(),
+      "author": $('input[author]').val(),
+      "album": $('input[album]').val(),
       "pitch": "0",
       "volume": "100",
       "fade_start_time": "0",
