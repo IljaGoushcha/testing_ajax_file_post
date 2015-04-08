@@ -60,10 +60,10 @@ function uploadToS3() {
 function sendToRails(url) {
   var songData = {
     song: {
-      "url": url,
-      "title": $('input[title]').val(),
-      "author": $('input[author]').val(),
-      "album": $('input[album]').val(),
+      "url": url.replace("uploads/", ""),
+      "title": $('input[name=title]').val(),
+      "author": $('input[name=author]').val(),
+      "album": $('input[name=album]').val(),
       "pitch": "0",
       "volume": "100",
       "fade_start_time": "0",
